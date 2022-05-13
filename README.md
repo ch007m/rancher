@@ -1,27 +1,29 @@
+Table of Contents
+=================
+* [Rancher](#rancher)
+* [References](#references)
+* [Architecture](#architecture)
+* [Install Rancher](#install-rancher)
+* [Tips](#tips)
+* [Cleanup](#cleanup)
+
 # Rancher
 
 See official documentation: https://rancher.com/products/rancher
 
-Table of Contents
-=================
- * [References](#references)
- * [Architecture](#architecture)
- * [Install Rancher](#install-rancher)
- * [Cleanup](#cleanup)
-
-## References
+# References
 
 https://blog.bitforger.dev/installing-rancher-on-k3s-without-public-internet-access
 https://www.liquidweb.com/kb/how-to-install-and-configure-rancher-k3s/
 
-## Architecture
+# Architecture
 
 The Rancher solution is composed of 2 systems: a rancher or k3s server running a supservisor top of akubernetes cluster
 and a k3s agent which is deployed/installed next to each node cluster
 
 ![](https://k3s.io/img/how-it-works-k3s-revised.svg)
 
-## Install Rancher
+# Install Rancher
 
 To install Rancher within a VM, execute the following command:
 
@@ -68,12 +70,17 @@ helm install rancher rancher-latest/rancher \
   --set bootstrapPassword=$RANCHER_ADMIN_PASSWORD
 ```
 
+You can now open the URL of the dashboard to create new clusters using the address: https://<IP>.sslip.io/
+and password passed as parameter to the Helm command.
+
+# Tips
+
 To get the kubeconfig and access it from another machine
 ```bash
 sudo cat /etc/rancher/k3s/k3s.yaml
 ```
 
-## Cleanup
+# Cleanup
 
 To uninstall
 ```bash

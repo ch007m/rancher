@@ -4,6 +4,7 @@ Table of Contents
 * [References](#references)
 * [Architecture](#architecture)
 * [Install Rancher](#install-rancher)
+* [Demo](#demo)
 * [Tips](#tips)
 * [Cleanup](#cleanup)
 
@@ -74,6 +75,10 @@ You can now open the URL of the dashboard to create new clusters using the addre
 and password passed as parameter to the Helm command.
 
 ![](image/dashboard.png)
+
+# Demo
+
+TODO
 
 # Tips
 

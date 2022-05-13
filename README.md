@@ -78,7 +78,72 @@ and password passed as parameter to the Helm command.
 
 # Demo
 
-TODO
+The DevExp proposed by Rancher / Suse is designed around the project [Epinio](https://docs.epinio.io/) which supports the concept of the `cf push` but
+using a different [client](https://docs.epinio.io/installation#installation) `epinio`. 
+
+An application which is pushed to the platform will be then built using `Paketo Buildpacks`, next deployed and route created
+
+```bash
+$ git clone https://github.com/epinio/epinio.git
+Cloning into 'epinio'...
+remote: Enumerating objects: 22426, done.
+remote: Counting objects: 100% (479/479), done.
+remote: Compressing objects: 100% (241/241), done.
+remote: Total 22426 (delta 259), reused 374 (delta 196), pack-reused 21947
+Receiving objects: 100% (22426/22426), 15.78 MiB | 17.99 MiB/s, done.
+Resolving deltas: 100% (15509/15509), done.
+
+$ cd epinio/assets/
+$ epinio settings update
+
+🚢  Updating the stored credentials from the current cluster
+Settings: /home/snowdrop/.config/epinio/settings.yaml
+
+✔️  Ok
+
+$ epinio push --name sample --path sample-app
+
+🚢  About to push an application with the given setup
+Manifest: <<Defaults>>
+Name: sample
+Source Origin: /home/snowdrop/epinio/assets/sample-app
+Target Namespace: workspace
+
+⚠️  Hit Enter to continue or Ctrl+C to abort (deployment will continue automatically in 5 seconds)
+
+Create the application resource ...
+
+Collecting the application sources ...
+
+Uploading application code ...
+
+Staging application with code...
+
+🚢  Streaming application logs
+Namespace: workspace
+Application: sample
+
+🕞  Running staging
+🕞  [stage-workspace-sample-547415552f6e292117f6b3ecc116ab3dfd6l7x5q] download-s3-blob By _ _ __ ___ _____ root /aws
+download: s3://epinio/da86fa4d-c27b-4e9d-8b85-89a58c05114f to ../workspace/source/da86fa4d-c27b-4e9d-8b85-89a58c05114f KiB/s) with 1 file(s) remaining
+🕞  [stage-workspace-sample-547415552f6e292117f6b3ecc116ab3dfd6l7x5q] download-s3-blob _ _ __ ___ _____ Done
+🕞  [stage-workspace-sample-547415552f6e292117f6b3ecc116ab3dfd6l7x5q] buildpack By _ _ __ ___ _____ cnb /layers
+🕞  [stage-workspace-sample-547415552f6e292117f6b3ecc116ab3dfd6l7x5q] buildpack /workspace
+🕞  [stage-workspace-sample-547415552f6e292117f6b3ecc116ab3dfd6l7x5q] buildpack /workspace/cache
+🕞  [stage-workspace-sample-547415552f6e292117f6b3ecc116ab3dfd6l7x5q] buildpack /workspace/source
+...
+Deploying application ...
+
+🕞  Creating application resources
+✔️  App is online.
+Name: sample
+Namespace: workspace
+Builder Image:
+Routes:
+1: https://sample.65.108.212.158.nip.io
+```
+
+![](image/epinio-app.png)
 
 # Tips
 

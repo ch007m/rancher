@@ -73,6 +73,8 @@ helm install rancher rancher-latest/rancher \
 You can now open the URL of the dashboard to create new clusters using the address: https://<IP>.sslip.io/
 and password passed as parameter to the Helm command.
 
+![](image/dashboard.png)
+
 # Tips
 
 To get the kubeconfig and access it from another machine
